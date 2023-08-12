@@ -8,16 +8,27 @@
     <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Brand</label>
-    <input type="text" name="brand" class="form-control" id="exampleFormControlInput1" placeholder="brand@example.com">
+    <label for="exampleFormControlTextarea1" class="form-label">sub_category_id</label>
+    <select name="sub_category_id" id="" class="form-control">
+      @forelse ($sub_categories as $sub_category)
+      <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
+          
+      @empty
+          
+      @endforelse
+    </select>
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">company</label>
-    <input type="text" name="company" class="form-control" id="exampleFormControlInput1" placeholder="company@example.com">
+    <label for="exampleFormControlInput1" class="form-label">Price</label>
+    <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="price@example.com">
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">subcategory</label>
-    <input type="text" name="subcategory" class="form-control" id="exampleFormControlInput1" placeholder="subcategory@example.com">
+    <label for="exampleFormControlInput1" class="form-label">qty</label>
+    <input type="text" name="qty" class="form-control" id="exampleFormControlInput1" placeholder="qty@example.com">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Image</label>
+    <input type="text" name="image" class="form-control" id="exampleFormControlInput1" placeholder="image@example.com">
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Description</label>

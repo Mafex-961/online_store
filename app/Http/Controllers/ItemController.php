@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\SubCategory;
 class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(){
-        $item = Item::all();
+    public function index()
+    {
+        $item = Item::paginate(2);
         
         return view('items.index',compact('item'));
     }
@@ -20,7 +22,8 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('items.create');
+        $sub_categories = SubCategory::all();
+        return view('items.create',compact('sub_categories'));
     }
 
     /**
@@ -30,9 +33,10 @@ class ItemController extends Controller
     {
         $item = new Item;
         $item->name = $request->name;
-        $item->brand = $request->brand;
-        $item->company = $request->company;
-        $item->subcategory = $request->subcategory;
+        $item->sub_category_id = $request->sub_category_id;
+        $item->price = $request->price;
+        $item->qty = $request->qty;
+        $item->image= $request->image;
         $item->description = $request->description;
         $item->save();
         return redirect('admin/item');
@@ -51,7 +55,8 @@ class ItemController extends Controller
      */
     public function edit(string $id)
     {
-        return view('items.edit');
+        $item = Item::findOrFail($id);
+        return view('items.edit',compact('item'));
     }
 
     /**
@@ -59,7 +64,15 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $item->name = $request->name;
+        $item->sub_category_id = $request->sub_category_id;
+        $item->price = $request->price;
+        $item->qty = $request->qty;
+        $item->image= $request->image;
+        $item->description = $request->description;
+        $item->update();
+        return redirect('admin/item');
     }
 
     /**
@@ -67,6 +80,8 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $item->delete();
+        return redirect('admin/item');
     }
 }

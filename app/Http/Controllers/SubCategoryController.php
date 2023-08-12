@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SubCategory;
+use App\Models\Category;
 class SubCategoryController extends Controller
 {
     /**
@@ -21,7 +22,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        return view('sub_categories.create');
+        $categories = Category::all();
+        return view('sub_categories.create',compact('categories'));
     }
 
     /**
@@ -63,7 +65,7 @@ class SubCategoryController extends Controller
         $sub_category->name = $request->name;
         $sub_category->category_id = $request->category_id;
         $sub_category->description = $request->description;
-        $aub->update();
+        $sub_category->update();
         return redirect('admin/sub_category');
     }
 

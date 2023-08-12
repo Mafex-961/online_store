@@ -9,7 +9,14 @@
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Category_id</label>
-    <textarea name="category_id" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <select name="category_id" id="" class="form-control">
+      @forelse ($categories as $category)
+      <option value="{{$category->id}}">{{$category->name}}</option>
+          
+      @empty
+          
+      @endforelse
+    </select>
   </div>
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Description</label>

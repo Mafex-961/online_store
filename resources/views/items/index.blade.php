@@ -9,9 +9,10 @@
       <tr>
         <th scope="col">id</th>
         <th scope="col">name</th>
-        <th scope="col">brand</th>
-        <th scope="col">company</th>
-        <th scope="col">subcategory</th>
+        <th scope="col">sub_category_id</th>
+        <th scope="col">price</th>
+        <th scope="col">qty</th>
+        <th scope="col">image</th>
         <th scope="col">description</th>
       </tr>
     </thead>
@@ -20,19 +21,30 @@
       <tr>
         <th scope="row">{{ $value->id }}</th>
         <td>{{ $value->name}}</td>
-        <td>{{$value->brand}}</td>
-        <td>{{$value->company}}</td>
-        <td>{{$value->subcategory}}</td>
+        <td>{{$value->sub_category->name}}</td>
+        <td>{{$value->price}}</td>
+        <td>{{$value->qty}}</td>
+        <td>{{$value->image}}</td>
         <td>{{ $value->description}}</td>
       
         <th>
-          <a href="{{ url('admin/item/1/edit')}}"><button class="btn btn-warning">edit</button></a>
-          <a href="{{ url('admin/item/1')}}"><button class="btn btn-secondary">show</button></a>
+          <a href="{{ url('admin/item/'.$value->id.'/edit')}}"><button class="btn btn-warning">edit</button></a>
+          <a href="{{ url('admin/item/'.$value->id)}}"><button class="btn btn-secondary">show</button></a>
+
+          <form action="{{ url('admin/item/'.$value->id)}}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button type="sumbit" class="btn btn-danger">Delete</button>
+
+
+          </form>
           
         </th>
       </tr>
       @endforeach
-    
+   
     </tbody>
   </table>
+  {{$item}}
 @endsection

@@ -21,7 +21,7 @@
       <tr>
         <th scope="row">{{$value->id}}</th>
         <td>{{$value->name}}</td>
-        <td>{{$value->category_id}}</td>
+        <td>{{$value->category->name}}</td>
         <td>{{$value->description}}</td>
         <td>{{$value->created_at}}</td>
         <td>{{$value->updated_at}}</td>
