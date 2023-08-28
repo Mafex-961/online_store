@@ -12,6 +12,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ItemController;
+use App\Http\Middleware\AdminAuth;
 
 
 
@@ -25,7 +26,7 @@ use App\Http\Controllers\ItemController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->middleware([AdminAuth::class])-> group(function(){
 
   Route::view('/','layouts.master');
   
