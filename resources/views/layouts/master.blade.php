@@ -34,6 +34,7 @@
                   <li><a class="dropdown-item" href="{{ url('admin/brand')}}">brand</a></li>
                   <li><a class="dropdown-item" href="{{ url('admin/company')}}">company</a></li>
                   <li><a class="dropdown-item" href="{{ url('admin/item')}}">item</a></li>
+                  <li><a class="dropdown-item" href="{{ url('admin/admin')}}">Admin</a></li>
                   <li><a class="dropdown-item" href="{{ url('admin/category/create')}}">Another action</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>

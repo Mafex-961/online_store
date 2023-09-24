@@ -15,7 +15,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        dd('hello pro');
+        
         return $next($request);
     }
 }
